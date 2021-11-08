@@ -1,0 +1,18 @@
+import PouchDB from '@craftzdog/pouchdb-core-react-native'
+import HttpPouch from 'pouchdb-adapter-http'
+import replication from '@craftzdog/pouchdb-replication-react-native'
+import mapreduce from 'pouchdb-mapreduce'
+import SQLite from 'react-native-sqlite-2'
+import SQLiteAdapterFactory from 'pouchdb-adapter-react-native-sqlite'
+
+const SQLiteAdapter = SQLiteAdapterFactory(SQLite)
+
+export default PouchDB
+  .plugin(HttpPouch)
+  .plugin(replication)
+  .plugin(mapreduce)
+  .plugin(SQLiteAdapter)
+
+ export const AppData = new PouchDB('Database', { adapter: 'react-native-sqlite' });
+ export const IMAGES = new PouchDB('Database', { adapter: 'react-native-sqlite' });
+
